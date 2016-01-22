@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<addon
+  id="webinterface.cool"
+  version="2.2.25"
+  name="Cool webinterface"
+  provider-name="Roland Greim">
+  <requires>
+    <import addon="xbmc.json" version="6.0.0"/>
+  </requires>
+  <extension
+    point="xbmc.webinterface"/>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="de_DE">Cool Webinterface.</summary>
+    <summary lang="en_AU">Cool Webinterface.</summary>
+    <summary lang="en_GB">Cool Webinterface.</summary>
+    <summary lang="en_NZ">Cool Webinterface.</summary>
+    <summary lang="en_US">Cool Webinterface.</summary>
+    <description lang="de_DE">Cool responsive Webinterface.</description>
+    <description lang="en_AU">Cool responsive Webinterface.</description>
+    <description lang="en_GB">Cool responsive Webinterface.</description>
+    <description lang="en_NZ">Cool responsive Webinterface.</description>
+    <description lang="en_US">Cool responsive Webinterface.</description>
+    <platform>all</platform>
+  </extension>
+</addon>

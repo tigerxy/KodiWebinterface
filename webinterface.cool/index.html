@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Kodi</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="search" href="provider.xml" type="application/opensearchdescription+xml" title="Kodi Library" /> -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Antic+Slab);
+        html,
+        body {
+            height: 100%;
+        }
+        
+        h1 {
+            font-family: 'Antic Slab', serif;
+            font-size: 80px;
+            color: #DDCCEE;
+        }
+        
+        .lead {
+            color: #DDCCEE;
+        }
+        /* Custom container */
+        
+        .container-full {
+            margin: 0 auto;
+            width: 100%;
+            min-height: 100%;
+            background-color: #110022;
+            color: #eee;
+            overflow: hidden;
+        }
+        
+        .container-full a {
+            color: #efefef;
+            text-decoration: none;
+        }
+        
+        .v-center {
+            margin-top: 7%;
+        }
+    </style>
+    <script type="text/javascript">
+        function playPause() {
+            var request = {
+                jsonrpc: "2.0",
+                id: 1,
+                method: "Player.PlayPause"
+            };
+            sendRPC(request);
+        };
+        function stop() {
+            var request = {
+                jsonrpc: "2.0",
+                id: 1,
+                method: "Player.Stop"
+            };
+            sendRPC(request);
+        };
+        function playUrl() {
+            var request = {
+                jsonrpc: "2.0",
+                id: 1,
+                method: "Player.Open",
+                params: {
+                    item: {
+                        file: document.getElementsByName("url")[0].value
+                    }
+                }
+            };
+            sendRPC(request);
+        };
+        function sendRPC(request) {
+            var url = "/jsonrpc?" + request.method;
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: JSON.stringify(request),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function () {}
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <div class="container-full">
+
+        <div class="row">
+
+            <div class="col-lg-12 text-center v-center">
+                <img src="images/Thumbnail.png" class="img-responsive center-block" alt="logo" />
+
+                <form class="col-lg-12">
+                    <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
+                        <input type="text" class="center-block form-control input-lg" title="Enter your URL." placeholder="Enter the URL you want to play"
+                        name="url">
+                        <span class="input-group-btn">
+                            <!--https://10-lvl3-gcs-pdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/411/6/152058910/467071859.mp4?expires=1453494664&token=04fec5f8ce0dc644cdf89-->
+                            <button class="btn btn-lg btn-primary" type="button" onclick="playUrl();">
+                            <span class="glyphicon glyphicon glyphicon-send" aria-hidden="true"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <br/>
+                    <br/>
+                </form>
+                
+                <!--<div class="btn-group" role="group" aria-label="Controls">
+                    <button type="button" class="btn btn-lg btn-default" onclick="playPause();">
+                        <span class="glyphicon glyphicon glyphicon-pause" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-lg btn-default" onclick="stop();">
+                        <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+                    </button>
+                </div>-->
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
