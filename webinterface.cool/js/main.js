@@ -40,7 +40,17 @@ function sendRPC(request) {
         success: function () { }
     });
 };
+function urlParam(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+      return decodeURIComponent(results[1]);
+    }
+};
 window.onload = function (e) {
+    var param = urlParam("url");
     url = document.getElementById("url");
     url.focus();
     url.select();
@@ -50,4 +60,9 @@ window.onload = function (e) {
             event.preventDefault();
         }
     });
+    if(param != null)
+    {
+        url.value = param;
+        playUrl();
+    }
 }
